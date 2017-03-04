@@ -1,9 +1,5 @@
-import { animate,
-  AnimationEntryMetadata,
-  state,
-  style,
-  transition,
-  trigger } from '@angular/core';
+// #docregion
+import { animate, AnimationEntryMetadata, state, style, transition, trigger } from '@angular/core';
 
 // Component transition animations
 export const slideInDownAnimation: AnimationEntryMetadata =

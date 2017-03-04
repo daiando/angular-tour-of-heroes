@@ -8,12 +8,17 @@ import { CrisisListComponent }       from './crisis-list.component';
 import { CrisisCenterComponent }     from './crisis-center.component';
 import { CrisisDetailComponent }     from './crisis-detail.component';
 
-import { CanDeactivateGuard }     from '../can-deactivate-guard.service';
-import { CrisisDetailResolver }   from './crisis-detail-resolver.service';
+// #docregion can-deactivate-guard
+import { CanDeactivateGuard }    from '../can-deactivate-guard.service';
 
 const crisisCenterRoutes: Routes = [
   {
     path: '',
+    redirectTo: '/crisis-center',
+    pathMatch: 'full'
+  },
+  {
+    path: 'crisis-center',
     component: CrisisCenterComponent,
     children: [
       {
@@ -23,10 +28,7 @@ const crisisCenterRoutes: Routes = [
           {
             path: ':id',
             component: CrisisDetailComponent,
-            canDeactivate: [CanDeactivateGuard],
-            resolve: {
-              crisis: CrisisDetailResolver
-            }
+            canDeactivate: [CanDeactivateGuard]
           },
           {
             path: '',
@@ -44,9 +46,6 @@ const crisisCenterRoutes: Routes = [
   ],
   exports: [
     RouterModule
-  ],
-  providers: [
-    CrisisDetailResolver
   ]
 })
 export class CrisisCenterRoutingModule { }

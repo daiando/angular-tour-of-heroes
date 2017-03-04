@@ -9,11 +9,21 @@ import { CrisisCenterComponent }     from './crisis-center.component';
 import { CrisisDetailComponent }     from './crisis-detail.component';
 
 import { CanDeactivateGuard }     from '../can-deactivate-guard.service';
+
+// #docregion crisis-detail-resolver
 import { CrisisDetailResolver }   from './crisis-detail-resolver.service';
 
+// #enddocregion crisis-detail-resolver
 const crisisCenterRoutes: Routes = [
+  // #docregion redirect
   {
     path: '',
+    redirectTo: '/crisis-center',
+    pathMatch: 'full'
+  },
+  // #enddocregion redirect
+  {
+    path: 'crisis-center',
     component: CrisisCenterComponent,
     children: [
       {
@@ -38,6 +48,7 @@ const crisisCenterRoutes: Routes = [
   }
 ];
 
+// #docregion crisis-detail-resolver
 @NgModule({
   imports: [
     RouterModule.forChild(crisisCenterRoutes)
@@ -50,4 +61,5 @@ const crisisCenterRoutes: Routes = [
   ]
 })
 export class CrisisCenterRoutingModule { }
+// #enddocregion crisis-detail-resolver
 // #enddocregion

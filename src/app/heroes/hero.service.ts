@@ -1,6 +1,9 @@
+// #docregion
 import { Injectable } from '@angular/core';
 
-import { Hero } from './hero';
+export class Hero {
+  constructor(public id: number, public name: string) { }
+}
 
 let HEROES = [
   new Hero(11, 'Mr. Nice'),
@@ -10,10 +13,13 @@ let HEROES = [
   new Hero(15, 'Magneta'),
   new Hero(16, 'RubberMan')
 ];
+
 let heroesPromise = Promise.resolve(HEROES);
+
 @Injectable()
 export class HeroService {
   getHeroes() { return heroesPromise; }
+
   getHero(id: number | string) {
     return heroesPromise
       .then(heroes => heroes.find(hero => hero.id === +id));
